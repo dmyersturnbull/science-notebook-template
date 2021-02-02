@@ -1,4 +1,4 @@
-name: tyrannosaurus
+name: sciencenotebooktemplate
 channels:
   - conda-forge
 dependencies:
