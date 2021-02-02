@@ -1,5 +1,6 @@
 # Science notebook template
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dmyersturnbull/science-notebook-template/HEAD)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4485186.svg)](https://doi.org/10.5281/zenodo.4485186)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![template science_notebook](https://img.shields.io/badge/template-science_notebook-990099.svg)](https://github.com/dmyersturnbull/science-notebook-template)
@@ -58,6 +59,7 @@ Instead, commit to a new branch and make a pull request.
 4. Add your code, commit it, and push it to a _new_ branch.
 5. Make a pull request against _main_, wait for the checks to pass, and rebase the changes into _main_.
 6. [Get a DOI](https://guides.github.com/activities/citable-code/) for your repo.
+7. Consider using [Binder](https://mybinder.org/)
 
 ### Contributing
 
