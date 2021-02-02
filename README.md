@@ -1,7 +1,7 @@
 # Science notebook template
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dmyersturnbull/science-notebook-template/HEAD)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4485186.svg)](https://doi.org/10.5281/zenodo.4485186)
+[![DOI](https://zenodo.org/badge/335203974.svg)](https://zenodo.org/badge/latestdoi/335203974)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![template science_notebook](https://img.shields.io/badge/template-science_notebook-990099.svg)](https://github.com/dmyersturnbull/science-notebook-template)
 
@@ -16,11 +16,11 @@ No cookiecutter. Just click _Use this Template_ above.
 Please reference the manuscript with this BibTeX:
 
 ```
-@misc{https://doi.org/10.5281/zenodo.4485186,
-  doi = {10.5281/ZENODO.4485186},
+@misc{sciencenotebooktemplate,
+  doi = {10.5281/zenodo.4495745},
   url = {https://zenodo.org/record/4485186},
   author = {Myers-Turnbull, Douglas},
-  title = {dmyersturnbull/tyrannosaurus: v0.9.1},
+  title = {dmyersturnbull/science-notebook-template: v0.1.0},
   publisher = {Zenodo},
   year = {2021},
   copyright = {Open Access}
@@ -29,7 +29,7 @@ Please reference the manuscript with this BibTeX:
 
 Or APA format:
 
-> Myers-Turnbull, D. (2021). dmyersturnbull/tyrannosaurus: v0.9.1 (v0.9.1) [Computer software]. Zenodo. https://doi.org/10.5281/ZENODO.4485186
+> Myers-Turnbull, D. (2021). dmyersturnbull/science-notebook-template (v0.1.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.4495745
 
 ### About this repository
 
