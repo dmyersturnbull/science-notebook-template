@@ -1,0 +1,27 @@
+# Check out https://pre-commit.com/ for documentation
+# and https://pre-commit.com/hooks.html for more hooks
+minimum_pre_commit_version: 2.9.0
+repos:
+  # --- Built-in hooks --
+  - hooks:
+      - id: check-symlinks
+      - id: check-case-conflict
+      - id: fix-byte-order-marker
+      - id: end-of-file-fixer
+      - id: check-merge-conflict
+      - id: debug-statements
+      - id: check-toml
+      - id: check-json
+    repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.4.0
+
+  # --- Linters ---
+  - hooks:
+      - id: black
+    repo: https://github.com/psf/black
+    rev: 20.8b1
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    hooks:
+      - id: prettier
+        stages: [commit]
+    rev: v2.2.1

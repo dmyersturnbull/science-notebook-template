@@ -1,0 +1,16 @@
+# Various static code analysis and checks
+# Runs on commit or pull (to any branch)
+# and on a schedule (weekly)
+name: Static checks
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: 0 7 * * 6
+jobs:
+  markdown-link-check:
+    name: Check Markdown links
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@master
+      - uses: gaurav-nelson/github-action-markdown-link-check@v1

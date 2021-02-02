@@ -1,0 +1,5 @@
+name: tyrannosaurus
+channels:
+  - conda-forge
+dependencies:
+  - python==3.9.1
