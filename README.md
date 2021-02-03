@@ -6,7 +6,7 @@
 [![template science_notebook](https://img.shields.io/badge/template-science_notebook-990099.svg)](https://github.com/dmyersturnbull/science-notebook-template)
 
 🧪 A simple, elegant template for repositories supporting publications.
-Companion to the more sophisticated [Tyrannosaurus](https://github.com/dmyersturnbull/tyrannosaurus), which is for code projects.
+Companion to the more sophisticated [🦖 Tyrannosaurus](https://github.com/dmyersturnbull/tyrannosaurus), which is for code projects.
 No cookiecutter. Just click _Use this Template_ above.
 
 ### Citing
@@ -40,7 +40,7 @@ Or APA format:
 - IDE hints via [EditorConfig](https://editorconfig.org/) with good defaults for most languages
 - [CodeMeta](https://codemeta.github.io/user-guide/) and [CITATION.cff](https://citation-file-format.github.io/)
 - Nice gitignore, dockerignore, changelog, and other misc files
-- Example Conda environment file and Vagrantfile
+- Example/stub Conda environment file, Vagrantfile, and shields
 
 ### Steps to reproduce
 
