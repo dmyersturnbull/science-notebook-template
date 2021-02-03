@@ -5,8 +5,8 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![template science_notebook](https://img.shields.io/badge/template-science_notebook-990099.svg)](https://github.com/dmyersturnbull/science-notebook-template)
 
-🧪 A simple, elegant template for repositories supporting publications.
-Companion to the more sophisticated [🦖 Tyrannosaurus](https://github.com/dmyersturnbull/tyrannosaurus), which is for code projects.
+🧪 A simple, elegant template for repositories supporting publications.  
+Scientific companion to the much more sophisticated code template [Tyrannosaurus 🦖](https://github.com/dmyersturnbull/tyrannosaurus)  
 No cookiecutter. Just click _Use this Template_ above.
 
 ### Citing
