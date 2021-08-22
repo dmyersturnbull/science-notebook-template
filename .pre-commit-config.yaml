@@ -1,6 +1,6 @@
 # Check out https://pre-commit.com/ for documentation
 # and https://pre-commit.com/hooks.html for more hooks
-minimum_pre_commit_version: 2.9.0
+minimum_pre_commit_version: 2.14.0
 repos:
   # --- Built-in hooks --
   - hooks:
@@ -9,19 +9,29 @@ repos:
       - id: fix-byte-order-marker
       - id: end-of-file-fixer
       - id: check-merge-conflict
-      - id: debug-statements
       - id: check-toml
       - id: check-json
+      - id: fix-encoding-pragma
+        args: ["--remove"]
+      - id: check-executables-have-shebangs
+      - id: check-shebang-scripts-are-executable
+      - id: trailing-whitespace
+        args: ["--markdown-linebreak-ext=md"]
+      - id: check-yaml
     repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.4.0
-
+    rev: v4.0.1
   # --- Linters ---
   - hooks:
       - id: black
     repo: https://github.com/psf/black
-    rev: 20.8b1
+    rev: 21.7b0
+  - repo: https://github.com/asottile/blacken-docs
+    rev: v1.10.0
+    hooks:
+      - id: blacken-docs
   - repo: https://github.com/pre-commit/mirrors-prettier
     hooks:
       - id: prettier
         stages: [commit]
-    rev: v2.2.1
+        exclude: ^recipes/.*
+    rev: v2.3.1
