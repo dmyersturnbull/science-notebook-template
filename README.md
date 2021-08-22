@@ -9,7 +9,7 @@
 Scientific companion to the much more sophisticated code template [Tyrannosaurus 🦖](https://github.com/dmyersturnbull/tyrannosaurus)  
 No cookiecutter. Just click _Use this Template_ above.
 
-### Citing
+### 👋 Citing
 
 **Just tell people how to cite your work.**
 
@@ -31,7 +31,7 @@ Or APA format:
 
 > Myers-Turnbull, D. (2021). dmyersturnbull/science-notebook-template (v0.1.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.4495745
 
-### About this repository
+### 🎁 About this repository
 
 **What’s in this repo?**
 
@@ -42,27 +42,27 @@ Or APA format:
 - Nice gitignore, dockerignore, changelog, and other misc files
 - Example/stub Conda environment file, Vagrantfile, and shields
 
-### Steps to reproduce
+### 📜 Steps to reproduce
 
 **How to download needed data, run the code, etc.**
 
-1. Clone this repository as a template and run `pre-commit install`. (`pip install pre-commit`).
+1. Clone this repository as a template and run `pip install pre-commit` and `pre-commit install`.
 2. Install the [Probot settings app](https://github.com/apps/settings).
 3. Add to [Binder](https://mybinder.org/) and [Get a DOI](https://guides.github.com/activities/citable-code/) for your repo.
 4. Make a local clone of your repo. Modify the readme, changelog, etc. Add your code/notebooks.
-5. Commit and push to *main*. (If a linter fails on commit, just re-run. It just meant the linter modified a file.)
+5. Commit and push to _main_. (If a linter fails on commit, just re-run. It just meant the linter modified a file.)
 
-### Branch protection rules
+### 🔒 Branch protection rules
 
 This template includes
 [branch protection](https://docs.github.com/en/github-ae@latest/github/administering-a-repository/managing-a-branch-protection-rule)
 rules for the _main_ branch that disable force-commits, forbid direct pushes,
 require status checks to pass, and require a linear history.
-You can configure these rules under *Settings → Branches → main*.
-The typical workflow is: push changes to a new branch, make a pull request against *main*, and squash–merge or rebase into *main* after the status checks pass.
-An *admin*-role user *can* push directly to *main*, but non-*admin* users (with write access) must make pull requests.
+You can configure these rules under _Settings → Branches → main_.
+The typical workflow is: push changes to a new branch, make a pull request against _main_, and squash–merge or rebase into _main_ after the status checks pass.
+An _admin_-role user _can_ push directly to _main_, but non-_admin_ users (with write access) must make pull requests.
 
-### Contributing
+### 🍁 Contributing
 
 **Tell people how to report problems and ask questions.**
 
