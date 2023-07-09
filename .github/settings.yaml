@@ -9,15 +9,7 @@ repository:
 
   homepage: "https://github.com/dmyersturnbull/science-notebook-template"
 
-  topics:
-    [
-      "template",
-      "cookiecutter",
-      "jupyter",
-      "jupyterlab",
-      "science",
-      "notebooks",
-    ]
+  topics: ["template", "cookiecutter", "jupyter", "jupyterlab", "science", "notebooks"]
 
   has_issues: true
   has_projects: false
