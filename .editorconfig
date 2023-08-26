@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: Copyright 2020-2023, Contributors to CICD
+# SPDX-PackageHomePage: https://github.com/dmyersturnbull/cicd
+# SPDX-License-Identifier: Apache-2.0
+
 # Check https://editorconfig.org for more information
 # These are derived from https://ukupat.github.io/tabs-or-spaces/
 # The most majority indentation style was selected for each language
@@ -13,6 +17,9 @@ indent_style = space
 indent_size = 2
 trim_trailing_whitespace = true
 insert_final_newline = true
+
+[*.md]
+trim_trailing_whitespace = false
 
 # 4-space, traditionally compiled without bytecode or JIT --
 #   Julia, Rust, D, C++, Objective-C, C, Fortran, and Assembly

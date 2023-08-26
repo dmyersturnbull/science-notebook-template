@@ -5,6 +5,7 @@ Science-notebook-template is licensed under the [Apache License 2.0](https://spd
 Feel free to [ask a question](https://github.com/dmyersturnbull/science-notebook-template/issues/new?assignees=&labels=kind%3A+question&template=question.md).
 Contributors are asked to abide by the [GitHub community guidelines](https://docs.github.com/en/site-policy/github-terms/github-community-guidelines).
 
-#### Pull requests
-
-?
+Please refer to the
+[contributing guide](https://dmyersturnbull.github.io/contributor-guide/),
+[maintainer guide](https://dmyersturnbull.github.io/maintainer-guide/),
+and [coding conventions](https://dmyersturnbull.github.io/coding-conventions/).

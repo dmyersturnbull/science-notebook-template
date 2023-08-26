@@ -2,15 +2,15 @@
 # SPDX-PackageHomePage: https://github.com/dmyersturnbull/science-notebook-template
 # SPDX-License-Identifier: Apache-2.0
 
-name: "✨ Feature"
-description: "Feature request"
-labels: ["type: feature"]
+name: "📚 Documentation"
+description: "Documentation issue"
+labels: ["type: docs"]
 
 body:
   - type: textarea
     id: description
     attributes:
-      label: What is the feature request?
-      placeholder: Describe the feature you would like.
+      label: What needs work?
+      placeholder: Describe the documentation issue.
     validations:
       required: true

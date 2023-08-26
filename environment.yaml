@@ -2,4 +2,4 @@ name: sciencenotebooktemplate
 channels:
   - conda-forge
 dependencies:
-  - python==3.9.6
+  - python==3.11.4

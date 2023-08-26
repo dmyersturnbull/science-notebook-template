@@ -1,7 +1,10 @@
-name: "Bug"
-title: "🐛 Bug"
+# SPDX-FileCopyrightText: Copyright 2020-2023, Contributors to science-notebook-template
+# SPDX-PackageHomePage: https://github.com/dmyersturnbull/science-notebook-template
+# SPDX-License-Identifier: Apache-2.0
+
+name: "🐛 Bug"
 description: "Bug report"
-labels: ["kind: bug"]
+labels: ["type: fix"]
 
 body:
   - type: textarea
