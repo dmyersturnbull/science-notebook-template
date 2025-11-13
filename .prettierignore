@@ -1,0 +1,15 @@
+# Prettier automatically uses .gitignore as well.
+
+# Note: Patterns are absolute, like `.dockerignore` but unlike `.gitignore`.
+
+# Conda recipes aren't real YAML files.
+/recipes/*.yaml
+
+# Helm chart templates aren't real YAML files.
+/**/helm/**/templates/*.yaml
+/**/chart/**/templates/*.yaml
+/**/charts/**/templates/*.yaml
+/**/helm-charts/**/templates/*.yaml
+
+# SVG files should probably be minified instead.
+/**/*.svg

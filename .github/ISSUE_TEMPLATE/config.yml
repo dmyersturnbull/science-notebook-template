@@ -1,5 +1,6 @@
 blank_issues_enabled: true
-contact_links:
-  - name: Ask a question
-    url: https://github.com/dmyersturnbull/science-notebook-template/discussions/new?category=q-a
-    about: Get help with something
+# If you want GitHub's Discussions feature instead of a Question issue type:
+#contact_links:
+#  - name: Ask a question
+#    url: https://github.com/dmyersturnbull/science-notebook-template/discussions/new?category=q-a
+#    about: Get help with something

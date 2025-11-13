@@ -1,0 +1,29 @@
+# SPDX-FileCopyrightText: Copyright 2020-2024, Contributors to science-notebook-template
+# SPDX-PackageHomePage: https://github.com/dmyersturnbull/science-notebook-template
+# SPDX-License-Identifier: Apache-2.0
+
+# Checks that https URIs resolve, on PR and schedule
+name: Static checks
+on:
+  pull_request:
+    types:
+      - ready_for_review
+      - synchronize
+      - edited
+    paths:
+      - '**/*.md'
+  pull_request:
+  schedule:
+    - cron: "0 7 * * 6"
+jobs:
+  markdown-link-check:
+    name: Check Markdown links
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run linkspector
+        uses: umbrelladocs/action-linkspector@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          filter_mode: added
+          reporter: ${{ github.event_type == 'schedule' && 'github-check' || 'github-pr-review' }}

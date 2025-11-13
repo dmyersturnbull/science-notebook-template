@@ -1,77 +1,128 @@
-# SPDX-FileCopyrightText: Copyright 2020-2023, Contributors to science-notebook-template
-# SPDX-PackageHomePage: https://github.com/dmyersturnbull/science-notebook-template
+# SPDX-FileCopyrightText: Copyright 2020-2025, Contributors to Tyrannosaurus
+# SPDX-PackageHomePage: https://github.com/dmyersturnbull/tyrannosaurus
 # SPDX-License-Identifier: Apache-2.0
 
 # Check out https://pre-commit.com/ for documentation
-minimum_pre_commit_version: 3.3.3
+minimum_pre_commit_version: 4.4.0
 repos:
+  # Standard hooks
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v6.0.0
     hooks:
-      - id: check-case-conflict
-      - id: check-merge-conflict
-      - id: check-toml
-      - id: check-json
-      - id: check-shebang-scripts-are-executable
-      - id: check-symlinks
-      - id: check-yaml
-        exclude: ^recipes/.*
-        args: [--unsafe]
-      - id: end-of-file-fixer
-      - id: fix-byte-order-marker
-      - id: fix-encoding-pragma
-        args: [--remove]
-      - id: trailing-whitespace
+      - id: check-added-large-files
+        args:
+          - --maxkb=256
+      - id: forbid-new-submodules # ban Git submodules
+      - id: check-case-conflict # ban ABC and abc both existing
+      - id: check-illegal-windows-names # ban filenames that are illegal on Windows
+      - id: check-merge-conflict # ban merge conflict markers
+        args:
+          - --assume-in-merge # otherwise skipped in rebase
+      - id: check-symlinks # ban *broken* symlinks
+      - id: check-shebang-scripts-are-executable # ensures all shebangs are executable
+      - id: end-of-file-fixer # auto-add final \n
+      - id: fix-byte-order-marker # auto-remove BOMs
+      - id: trailing-whitespace # auto-remove end-of-line whitespace
 
-  # --- Commit msg checks ---
-  # If you want!
-  #- hooks:
-  #    - id: commitizen
-  #      stages: ["commit-msg"]
-  #  repo: https://github.com/commitizen-tools/commitizen
-  #  rev: v3.6.0
+  - repo: local
+    hooks:
+      - id: check-filenames
+        name: Enforce file and directory naming conventions.
+        entry: >-
+          Path components may only use 'A-Za-z0-9_.,+=-' and cannot start with '-' or end with '.'.
+        language: fail
+        files: '[^/\w.,+=-]|(^|/)-|\.($|/)'
+        stages:
+          - pre-commit
+      - id: pathvalidate
+        name: Verify that paths are valid cross-platform.
+        entry: pathvalidate --max-len 255 validate --
+        language: python
+        additional_dependencies:
+          - pathvalidate-cli
+        stages:
+          - pre-commit
 
-  # --- Linters ---
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.35.0
+    hooks:
+      - id: check-github-actions
+      - id: check-github-workflows
+      - id: check-compose-spec
+      - id: check-metaschema
+        files: \.schema/.*\.(yaml|yml|json)$
+
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.37
+    hooks:
+      - id: yamllint
+        args:
+          - --strict
+          - --config-data
+          - |
+            rules:
+              anchors:
+                forbid-undeclared-aliases: true
+                forbid-duplicated-anchors: true
+                forbid-unused-anchors: true
+              float-values:
+                require-numeral-before-decimal: true
+                forbid-scientific-notation: true
+                forbid-nan: true
+                forbid-inf: true
+              key-duplicates:
+                forbid-duplicated-merge-keys: true
+              octal-values:
+                forbid-implicit-octal: true
+                forbid-explicit-octal: true
+              truthy:
+                allowed-values:
+                  - true
+                  - false
+
+  # UV lock and sync
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.9.9
+    hooks:
+      - id: uv-sync # first locks (without `--upgrade`)
+
+  # Format and lint Python with Ruff
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.0.280
+    rev: v0.14.4
     hooks:
-      - id: ruff
-        args: [--fix-only]
-        types_or: [python, pyi, jupyter]
+      - id: ruff-check
+        args:
+          - --fix-only
+          - --show-fixes
+      - id: ruff-format
 
-  - repo: https://github.com/psf/black
-    rev: 23.7.0
-    hooks:
-      - id: black
-
-  - repo: https://github.com/asottile/blacken-docs
-    rev: 1.14.0
-    hooks:
-      - id: blacken-docs
-
-  # --- Strip output from .ipynb files ---
-  - repo: https://github.com/kynan/nbstripout
-    rev: 0.6.1
-    hooks:
-      - id: nbstripout
-
-  # run black on Jupyter notebooks
-  - repo: https://github.com/nbQA-dev/nbQA
-    rev: 1.7.0
-    hooks:
-      - id: nbqa-ruff
-
-  - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v2.7.1
+  # Format various formats with Prettier
+  # IMPORTANT:
+  # Prettier or an enabled plugin must recognize the extension of every received file.
+  # Keep `additional_dependencies`, `args`, and the `files` regex synced.
+  # List only types that are used or are likely to be used.
+  # See official and community plugins: https://prettier.io/docs/plugins
+  # Note that some of the listed community plugins are extremely buggy.
+  # In particular, I recommend against prettier-plugin-sh, which often introduces syntax errors.
+  # All plugins in https://github.com/un-ts/prettier, including for toml, are also problematic.
+  - repo: https://github.com/JoC0de/pre-commit-prettier
+    rev: v3.6.2
     hooks:
       - id: prettier
-        stages: [commit]
-        # :tyranno: [--print-width, "${tool.ruff.line-length}"]
-        args: [--print-width, "120"]
-        exclude: ^recipes/.*
+        additional_dependencies:
+          - prettier@3.6.2
+        args:
+          - --experimental-ternaries # will be the default soon
+          - --experimental-operator-position=start # might be made the default soon
+        # See: https://prettier.io/docs/en/plugins.html
+        files: >-
+          (?x) \. (md|mdx|json|graphql|yaml|yml|js|ts|jsx|html|less|css|toml) $
 
-  - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
-    rev: v2.9.0
+  - repo: https://github.com/tcort/markdown-link-check
+    rev: v3.14.1
     hooks:
-      - id: pretty-format-ini
-        args: [--autofix]
+      - id: markdown-link-check
+        args:
+          - -q
+        stages:
+          - manual

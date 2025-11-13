@@ -7,7 +7,7 @@
 
 🧪 A simple, elegant template for repositories supporting publications.
 Scientific companion to the much more sophisticated code template [Tyrannosaurus 🦖](https://github.com/dmyersturnbull/tyrannosaurus)
-No cookiecutter. Just click _Use this Template_ above.
+No cookiecutter. Just click **Use this Template** above.
 
 ## 👋 Citing
 
@@ -36,50 +36,64 @@ Or APA format:
 
 **What’s in this repo?**
 
-- Automatic linting of Python, Markdown, config files, etc. using [pre-commit](https://pre-commit.com/)
-- Nice default GitHub settings (just install the [Probot settings app](https://github.com/apps/settings) to your repo
+- Automatic linting of Python, Markdown, config files, etc. using
+  [pre-commit](https://pre-commit.com/), [Ruff](https://github.com/astral-sh/ruff), and [Prettier](https://prettier.io/).
 - IDE hints via [EditorConfig](https://editorconfig.org/) with good defaults for most languages
-  [CITATION.cff](https://citation-file-format.github.io/)
-- Nice gitignore, dockerignore, changelog, and other misc files
-- Example/stub Conda environment file, Vagrantfile, and shields
+- Recommended readme organization, [CITATION.cff](https://citation-file-format.github.io/), etc.
+- Nice gitignore, dockerignore, pull request and issue templates, etc.
 
 ## 📜 Steps to reproduce
 
 **How to download needed data, run the code, etc.**
 
-1. Fork this repository as a template.
-2. Clone and run `pip install pre-commit` and `pre-commit install`.
-3. Install the [Probot settings app](https://github.com/apps/settings).
-4. Fix `.github/CODEOWNERS`. Replace with your username or org name.
-5. Fix `.github/settings.yml`. (**NOTE:** Make sure to change `private` and `name`.)
-6. If you want to use [Commitizen](https://commitizen-tools.github.io/), uncomment the lines in `.pre-commit.yaml`.
-   Otherwise, delete `.cz.toml`.
-7. Add to [Binder](https://mybinder.org/) and [Get a DOI](https://guides.github.com/activities/citable-code/) for your repo.
-8. Make a local clone of your repo. Modify the readme, changelog, etc. Add your code/notebooks.
-   Feel free to remove or replace SPDX headers.
-9. Commit and push to _main_. (If a linter fails on commit, just re-run. It just meant the linter modified a file.)
-10. Configure branch rules _Settings_.
+1. Click **Use this Template** and create your repo.
+2. Clone your repo, and run `pip install pre-commit` and `pre-commit install`.
+3. Add your scripts or notebooks, write your readme, and modify anything as you see fit.
+   _Note: When you run `git commit`, pre-commit will error if it made changes._
+   _That’s normal. Just re-run to finish the commit._
+4. In your repo settings, disable _Discussions_ and _Wiki_.
+   Also disable _Projects_, if not needed.
+5. Enable _Vulnerability reporting_ under _Code security_.
+6. Add a _Branch protection rule_ for _main_.
+   Check these boxes:
+   - _Require a pull request before merging_
+   - _Require status checks to pass before merging_
+   - _Require branches to be up to date before merging_
+   - _Require linear history_
+7. Set up [Binder](https://mybinder.org/), and [Get a DOI](https://guides.github.com/activities/citable-code/).
+
+### Development workflow
+
+Use pull requests (PRs) instead of committing directly into _main_.
+Give PRs useful titles and descriptions.
+Use GitHub Releases to mark stable versions, and include release notes that document the changes.
+Follow a consistent versioning scheme, such as [semantic versioning](https://semver.org/).
+
 
 ## 🌳 Layout
 
 **Describe the layout of this repo.**
 
-```bash
+```
 ├── src/                     ⟵ project source code
 ├── data
 │   ├── temp-output/         ⟵ files generated per-run
 │   │   ├── figures/         ⟵ raw charts and graphs
-│   │   └── ...misc. files
+│   │   ├── ...files
+│   │   ├── csv/             ⟵ raw tables
+│   │   └── ...files
 │   ├── living/              ⟵ files we are actively curating
 │   │   ├── figures/
+│   │   ├── tables/
 │   │   ├── manuscript/
-│   │   └── ...misc. files
+│   │   └── ...files
 │   └── frozen/              ⟵ non-modifiable files
 │       ├── raw/             ⟵ experimental or downloaded data
-│       └── ref/             ⟵ frozen analyses and figures
+│       └── ref/             ⟵ frozen analyses and outputs
 └── README.md
 ```
 
+Some of or all your data might live somewhere external (as documented below) rather than `data/frozen/`.
 See [research projects guide](https://dmyersturnbull.github.io/guide/research-projects/) for more info.
 
 ## 🔌 External resources
@@ -90,9 +104,11 @@ See [research projects guide](https://dmyersturnbull.github.io/guide/research-pr
 
 **Tell people how to report problems and ask questions.**
 
-The source code in this repository is licensed under the terms of the [Apache License 2.0](https://spdx.org/licenses/Apache-2.0.html).
+The source code in this repository is licensed under the terms of the
+[Apache License 2.0](https://spdx.org/licenses/Apache-2.0.html).
 Contributions and questions are welcome via issues.
-For reference, refer to the [contributing guide](https://github.com/dmyersturnbull/science-notebook-template/blob/main/CONTRIBUTING.md)
+For reference, refer to the
+[contributing guide](https://github.com/dmyersturnbull/science-notebook-template/blob/main/CONTRIBUTING.md)
 and [security policy](https://github.com/dmyersturnbull/science-notebook-template/blob/main/SECURITY.md).
 
 Note: The source code headers (i.e., SPDX) are to protect you, the user.

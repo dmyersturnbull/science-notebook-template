@@ -1,8 +1,24 @@
-*                   text=auto  eol=lf
-*.lock              text       eol=lf    -diff
-package.json        text       eol=lf
-package-lock.json   text       eol=lf    -diff
-pnpm-lock.yaml      text       eol=lf    -diff
-environment.yaml    text       eol=lf    -diff
-*.ipynb             text       eol=lf    -diff
-*.gitattributes     text       eol=lf    linguist-language=gitattributes
+# SPDX-FileCopyrightText: Copyright 2020-2025, Contributors to Tyrannosaurus
+# SPDX-PackageHomePage: https://github.com/dmyersturnbull/tyrannosaurus
+# SPDX-License-Identifier: Apache-2.0
+
+# ***** This file is important -- don't delete it! *****
+# First, it keeps `\r\n` out by transparently converting
+# `\r\n` to `\n` -- even if `git config core.autocrlf` is false.
+# Second, it hides diffs for lock files and Jupyter notebooks.
+# As a bonus, it configures github-linguist.
+
+# See:
+# - https://git-scm.com/docs/gitattributes
+# - https://github.com/github-linguist/linguist/blob/main/docs/overrides.md#using-gitattributes
+
+*                     text=auto eol=lf working-tree-encoding=UTF-8
+*-lock.yaml           -diff
+*-lock.json           -diff
+*.ipynb               -diff
+
+# To include docs in the statistics, uncomment this line:
+# docs/**/*           linguist-detectable -linguist-documentation
+
+# Never let linguist detect files starting with `.` or `_`.
+[_.]*                 linguist-vendor

@@ -4,13 +4,14 @@
 
 name: "✨ Feature"
 description: "Feature request"
-labels: ["type: feature"]
+labels:
+  - enhancement
 
 body:
   - type: textarea
     id: description
     attributes:
       label: What is the feature request?
-      placeholder: Describe the feature you would like.
+      placeholder: details
     validations:
       required: true

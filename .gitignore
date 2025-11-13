@@ -1,126 +1,188 @@
-# Also see https://github.com/github/gitignore/blob/master/Python.gitignore
-# This is simpler and easier to understand
-# We'll ignore all .* files and then re-add some
+# SPDX-FileCopyrightText: Copyright 2020-2025, Contributors to Tyrannosaurus
+# SPDX-PackageHomePage: https://github.com/dmyersturnbull/tyrannosaurus
+# SPDX-License-Identifier: Apache-2.0
 
-/data/temp-output
+# gitignore for Python, Java/Scala/Kotlin, C/C++, JavaScript/TypeScript, and Julia.
+# This works well for many other languages, but it is NOT one-size-fits-all.
+# It covers some common tools and IDEs, but it again isn't comprehensive.
+# It also disregards obsolete files like Python `*.egg`.
+#
+# The approach is to blacklist `.*` and similar patterns, then to whitelist specific files.
+# This approach makes the file much simpler and easier to understand.
+# Some of the rules are derived from <https://github.com/github/gitignore/>.
+#
+# Whether to use a more universal or more tailored gitignore is debatable.
+# I recommend:
+# - Tailor to per-repo languages, build tools, and runtime systems.
+#   E.g. it's reasonable to remove the sqlite and Cmake sections.
+# - Be more universal for popular IDEs and tools.
+#   E.g. if vim starts prefixing temp files with `%`, you should probably add it.
+#   Yes, developers should use `core.excludesfile`, but many don't.
+# - Be more universal for clearly unwanted files.
+#   E.g. `aws-private-key.pem` should probably never be inside the repo,
+#   but make sure it's ignored anyway.
+#
+# Notes:
+# - Unlike  in `.dockerignore` and `.prettierignore`, patterns are relative.
+#  `x` is equivalent to `**/x`, in contrast to `.dockerignore` and `.prettierignore`.
+# - Always mark directories with a `/` suffix.
+# - Per section, place directories above files; then sort lexicographically.
+#   (Order (using regex): `/` ≺ `*` ≺ `[^A-Za-z0-9]` ≺ `[0-9]` ≺ `[A-Za-z]`.)
 
-# General hidden or unwanted
+### Temporary paths ###
+
+# Dotted paths (many whitelisted later)
 .*
-~*
-*~
-*#
-Thumbs.db
-*.bak
-*.swp
-tmp/
-null
+
+# Paths starting or ending in `~`, `$`, or `#`; or starting in `.~`.
+# These are normally temp files like `~$doc.docx` or `.profile#`.
+*[~#$]
+[~#$]*
+.~*
+
+# Temp and misc. unwanted files
+*[.~]bak
+*[.~]out
+*[.~]swp
+*[.~]temp
+*[.~]tmp
 *.log
 *.pid
+Thumbs.db
+
+### Large binary files ###
+
+# Databases
+*.sqlite3
+*.sqlite3-journal
 
 # Archives
-*.gz
-*.xz
-*.lzma
-*.lz4
-*.zstd
-*.zip
 *.7z
-*.rar
+*.ear
+*.gz
+*.jar
+*.lz4
+*.lzma
 *.tar
 *.tar.gz
 *.tgz
-*.jar
 *.war
-*.nar
-*.ear
+*.xz
+*.zip
+*.zst
 
 # Executables and libraries
+*.dll
+*.dylib
 *.exe
 *.msi
 *.pkg
-*.dll
 *.so
-*.dylib
 
-# Files from other languages
-*.o
-*.ko
-luac.out
-hs_err_pid*
-replay_pid*
-gradle-app.setting
-*.class
-*.jl.cov
-*.jl.*.cov
-*.jl.mem
-deps/deps.jl
+### Cross-language directories ###
 
-# Python temp and build files
-env/
-venv/
-ENV/
+# Build directories
+/bin/
+/build/
+/dist/
+/obj/
+/out/
+/sdist/
+/target/
+
+# Prebuilt libraries
+/lib/
+/vendor/
+
+# Auto-generated docs
+/docs/html/
+/docs/_build/
+/docs/autoapi/
+/site/
+
+### Language-specific paths ###
+
+# Coverage
+/coverage/
+/htmlcov/
+
+# Python
 __pycache__/
 __pypackages__/
-*.py[cod]
-*$py.class
-*.egg-info
-pip-wheel-metadata
-share/python-wheels/
-build/
-dist/
-eggs/
-sdist/
-
-# Documentation and coverage
-site/
-docs/html/
-docs/_build
 cython_debug/
-docs/autoapi
-htmlcov
-coverage.xml
-coverage.json
+*.py[cod]
 
-# Translations
-*.mo
-*.pot
+# Java
+/pom.xml.*
+*.class
 
-# IPython
-profile_default/
-ipython_config.py
+# C and C++
+*.a
+*.pch
+*.gch
+*.ko
+*.lib
+*.lo
+*.o
+pch.h
 
-# Django
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
+### Temporary files for tools ###
+
+# Make, CMake, automake, autoconf, pkg-config, etc.
+_deps
+*.la
+*.pc
+/cmake_install.cmake
+/compile_commands.json
+/install_manifest.txt
+
+# JavaScript and TypeScript
+node_modules/
+tsconfig.tsbuildinfo
+
+# Julia
+*.jl.*.cov
+*.jl.cov
+*.jl.mem
+deps/deps.jl
 
 # Celery
 celerybeat-schedule
 
-# Keep these config files
-!/.gitignore
-!/.git/config
-!/.cz.toml
-!/.prettierignore
-!/.travis.yml
-!/.travis.yaml
-!/.circleci/config.yaml
-!/.circleci/config.yml
+# Terraform
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+### Whitelist dotted files ###
+
+# Git
 !/.git-blame-ignore-revs
-!/.github
-!.gitattributes
-!/.appveyor.yaml
-!/.appveyor.yml
-!/.flake8
-!/.readthedocs.yaml
-!/.readthedocs.yml
-!/.dockerignore
+!/.gitattributes
+!/.gitmodules
+
+# Template files
+/.env.template
+
+# `.ignore` files (e.g. `.dockerignore`, `.npmignore`)
+!/.*ignore
+
+# GitHub
+!/.devcontainer
+!/.github/
+!/.nojekyll
+
+# Linters
 !/.editorconfig
-!/.pre-commit-config.yaml
-!/.pre-commit-config.yml
-!/.pre-commit-hooks.yaml
-!/.pre-commit-hooks.yml
-!.npmignore
-!/.scrutinizer.yaml
-!/.scrutinizer.yml
-!**/.nojekyll
+!/.prettierrc*
+
+# mkdocs
+!.meta.yaml
+
+# External service config
+!/.*.toml
+!/.*.yaml
+!/.*/[a-z0-9_-]*.toml
+!/.*/[a-z0-9_-]*.yaml
+!/.circleci/

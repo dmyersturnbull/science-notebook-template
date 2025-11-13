@@ -2,16 +2,21 @@
 # SPDX-PackageHomePage: https://github.com/dmyersturnbull/science-notebook-template
 # SPDX-License-Identifier: Apache-2.0
 
-name: "📚 Documentation"
-description: "Documentation issue"
+name: "💬 Question"
+description: "Question"
 labels:
-  - documentation
+  - question
 
 body:
   - type: textarea
     id: description
     attributes:
-      label: What needs work?
-      placeholder: details
+      label: What do you need help with?
+      placeholder: Question details
     validations:
       required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: What version are you running?
